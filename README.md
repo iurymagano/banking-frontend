@@ -30,13 +30,6 @@ To get started with the project, follow these steps:
 
 If you would like to see the live deployment, you can visit the following URL: [Banking Frontend Live](https://banking-frontend-mocha.vercel.app/)
 
-## Development Process
-
-Below, you will find some images that showcase the development process of this project:
-
-![Development Process](![image](https://github.com/user-attachments/assets/57c7c0ea-052f-4b46-8368-8425371093d7))
-
-
 ## Features
 
 - User authentication
@@ -44,9 +37,6 @@ Below, you will find some images that showcase the development process of this p
 - Viewing all transactions
 - Total balance display
 
-## Contributing
-
-Contributions are welcome! If you have suggestions or improvements, feel free to fork the repository and submit a pull request.
 
 ## License
 
