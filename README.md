@@ -8,7 +8,7 @@ To get started with the project, follow these steps:
 
 1. **Clone the project**:
    ```bash
-   git clone <[repository-url](https://github.com/iurymagano/banking-frontend.git)>
+   git clone https://github.com/iurymagano/banking-frontend.git
    ```
    
 2. **Navigate to the project directory**:
@@ -34,7 +34,8 @@ If you would like to see the live deployment, you can visit the following URL: [
 
 Below, you will find some images that showcase the development process of this project:
 
-![Development Process](image.png)
+![Development Process](![image](https://github.com/user-attachments/assets/57c7c0ea-052f-4b46-8368-8425371093d7))
+
 
 ## Features
 
