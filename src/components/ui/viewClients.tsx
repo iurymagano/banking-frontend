@@ -34,7 +34,7 @@ export default function ViewClients({ data, title }: Props) {
       <CardContent>
         <ul className="space-y-0">
           {data.map((cliente) => (
-            <Link href={`statement/${cliente.id}`}>
+            <Link key={cliente.id} href={`statement/${cliente.id}`}>
               <li
                 key={cliente.id}
                 className="flex items-center space-x-2 p-2 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer"

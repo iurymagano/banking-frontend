@@ -20,7 +20,7 @@ export const MainLayout = ({ user, children }: Props) => {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     const refreshAccounts = async () => {
