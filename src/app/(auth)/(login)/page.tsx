@@ -6,7 +6,7 @@ import * as z from 'zod';
 import { Eye, EyeOff, Lock, Mail, AlertCircle } from 'lucide-react';
 import { handleSignIn } from '@/lib/server/auth';
 import { useToast } from '@/hooks/use-toast';
-import { redirect, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 
