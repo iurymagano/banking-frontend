@@ -30,7 +30,7 @@ export default function MenuMobile() {
           </Button>
         </SheetTrigger>
         <SheetContent side="left" className="w-[240px] sm:w-[300px]">
-          <div className="flex flex-col h-full ">
+          <div className="flex flex-col h-full" onClick={() => setOpen(false)}>
             <ModalAccount>
               <div className="flex gap-2  items-center px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground rounded-md transition-colors">
                 <IoIosPersonAdd size={24} color="blue" />
