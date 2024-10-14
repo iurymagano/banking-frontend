@@ -50,7 +50,10 @@ export default function MenuMobile() {
               </div>
             </ModalTransf>
 
-            <div className=" flex-grow border-t-[1px] border-zinc-300 mt-2 pb-2">
+            <div
+              className=" flex-grow border-t-[1px] border-zinc-300 mt-2 pb-2"
+              onClick={() => setOpen(false)}
+            >
               <Link
                 href={'/dashboard'}
                 className="flex gap-2 items-center py-2 text-sm hover:bg-accent hover:text-accent-foreground rounded-md transition-colors"

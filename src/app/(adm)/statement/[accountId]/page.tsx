@@ -18,50 +18,7 @@ import NumberMotion from '@/components/ui/numberMotion';
 import { apiIca } from '@/lib/requests';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { formatDate, formatDoc } from '@/lib/utils/format';
-
-// Mock data for the account statement
-const mockTransactions = [
-  {
-    id: 1,
-    date: '2023-06-01',
-    type: 'incoming',
-    from: 'John Doe',
-    to: 'You',
-    amount: 500,
-  },
-  {
-    id: 2,
-    date: '2023-06-02',
-    type: 'outgoing',
-    from: 'You',
-    to: 'Jane Smith',
-    amount: 200,
-  },
-  {
-    id: 3,
-    date: '2023-06-03',
-    type: 'incoming',
-    from: 'Company XYZ',
-    to: 'You',
-    amount: 1000,
-  },
-  {
-    id: 4,
-    date: '2023-06-04',
-    type: 'outgoing',
-    from: 'You',
-    to: 'Electricity Bill',
-    amount: 150,
-  },
-  {
-    id: 5,
-    date: '2023-06-05',
-    type: 'incoming',
-    from: 'Client ABC',
-    to: 'You',
-    amount: 750,
-  },
-];
+import { redirect } from 'next/navigation';
 
 type Props = {
   params: {
@@ -74,6 +31,9 @@ export default async function Account({ params }: Props) {
     method: 'GET',
     path: `/account/${params.accountId}`,
   });
+  if (resp.result !== 'success' || !params.accountId) {
+    redirect('/');
+  }
 
   const respTransactions = await apiIca({
     method: 'GET',
