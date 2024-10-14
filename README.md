@@ -2,6 +2,11 @@
 
 Welcome to the Banking Frontend project! This application allows users to securely manage their bank accounts and transactions.
 
+## Live Deployment
+
+If you would like to see the live deployment, you can visit the following URL: [Banking Frontend Live](https://banking-frontend-mocha.vercel.app/)
+
+
 ## Getting Started
 
 To get started with the project, follow these steps:
@@ -25,10 +30,6 @@ To get started with the project, follow these steps:
    ```bash
    npm run dev
    ```
-
-## Live Deployment
-
-If you would like to see the live deployment, you can visit the following URL: [Banking Frontend Live](https://banking-frontend-mocha.vercel.app/)
 
 ## Features
 
