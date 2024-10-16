@@ -13,8 +13,12 @@ import { MdOutlineAttachMoney } from 'react-icons/md';
 import { BiTransfer } from 'react-icons/bi';
 import Link from 'next/link';
 
-export default function MenuMobile() {
-  const [open, setOpen] = useState(false);
+export default function MenuMobileAdm() {
+  const [open, setOpen] = useState<boolean>(false);
+
+  const handleLogout = () => {
+    handleSignOut();
+  };
 
   return (
     <div className="block lg:hidden">
@@ -65,7 +69,7 @@ export default function MenuMobile() {
               </Link>
               <div
                 className="flex gap-2 items-center px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground rounded-md transition-colors"
-                onClick={() => handleSignOut()}
+                onClick={handleLogout}
               >
                 <LogOut color="brown" size={24} />
                 <span className=" text-sm cursor-pointer">Sair</span>

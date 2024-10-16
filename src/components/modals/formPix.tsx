@@ -25,8 +25,9 @@ import {
 } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
 import { useAccountStore } from '@/stores/accountsStore';
-import { apiIca, createTransfers } from '@/lib/requests';
 import { formatValor } from '@/lib/utils/format';
+import { createPix } from '@/lib/requests';
+import { useAuthStore } from '@/stores/authStore';
 
 const formSchema = z.object({
   accountId: z.string({
@@ -51,6 +52,7 @@ export default function FormPix({ setIsOpen }: Props) {
   const [loading, setLoading] = useState<boolean>(false);
   const [valorFormat, setValorFormat] = useState('');
   const { toast } = useToast();
+  const { user } = useAuthStore();
   const { accounts } = useAccountStore();
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -63,7 +65,10 @@ export default function FormPix({ setIsOpen }: Props) {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setLoading(true);
-    const resp = await createTransfers(values);
+    const resp = await createPix({
+      ...values,
+      document: user.accounts[0].document,
+    });
     if (resp.result !== 'success') {
       toast({
         variant: 'destructive',

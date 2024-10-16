@@ -30,6 +30,7 @@ import { schemaSignUp } from '@/schemas/schemaCreateUser';
 import { handleSignUp } from '@/lib/server/auth';
 import { useToast } from '@/hooks/use-toast';
 import { useRouter } from 'next/navigation';
+import { useAuthStore } from '@/stores/authStore';
 
 type FormValues = z.infer<typeof schemaSignUp>;
 
@@ -37,6 +38,7 @@ export default function RegistroAvancadoPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [passwordStrength, setPasswordStrength] = useState(0);
   const [loading, setLoading] = useState(false);
+  const { clearUser } = useAuthStore();
   const { toast } = useToast();
   const router = useRouter();
 
@@ -71,6 +73,7 @@ export default function RegistroAvancadoPage() {
   }, [form]);
 
   const onSubmit = async (data: FormValues) => {
+    // clearUser();
     setLoading(true);
     const resp = await handleSignUp(data);
 

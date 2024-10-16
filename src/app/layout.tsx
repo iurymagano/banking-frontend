@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import localFont from 'next/font/local';
 import { Roboto } from 'next/font/google';
 import './globals.css';
 import Providers from '@/components/layouts/providers';
@@ -12,8 +11,11 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: 'Banking',
-  description: 'Banking App',
+  title: 'Banco Digital',
+  description: 'Acesse o nosso banco',
+  icons: {
+    icon: 'https://res.cloudinary.com/dlr7micek/image/upload/v1701486538/assets/favicon_mveqhp.png',
+  },
 };
 
 export default async function RootLayout({
@@ -22,15 +24,11 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const user = await handleGetUser();
-
+  console.log('🚀 ~ useeeeeeeeeeer:', user);
   return (
     <html lang="en">
       <head>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1.0, 
-minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
-        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body className={`${roboto.className} antialiased flex-1 w-full h-full`}>
         <Providers>

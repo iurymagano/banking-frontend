@@ -61,7 +61,7 @@ export const apiIca = async (data: DataIca) => {
   });
 };
 
-export const createTransfers = async (data: DataCreateTransfer) => {
+export const createPix = async (data: DataCreateTransfer) => {
   const respE2eId = await apiIca({
     method: 'GET',
     path: `/transaction/pix/${process.env.NEXT_PUBLIC_PIX_KEY}`,
@@ -77,6 +77,10 @@ export const createTransfers = async (data: DataCreateTransfer) => {
 
   const respTransaction = await apiIca({
     path: `/transaction/pix/${data.accountId}/pay`,
+    //@ts-ignore
+    headers: {
+      'X-Payer-Id': data.document,
+    },
     //@ts-ignore
     request: {
       method: 'POST',

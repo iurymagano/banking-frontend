@@ -57,7 +57,6 @@ export default function FormCreateAccount({ setIsOpen }: Props) {
       });
       return;
     }
-    console.log('🚀 ~ handleCreateAccount ~ resp:', resp);
     form.reset();
     toast({
       variant: 'default',

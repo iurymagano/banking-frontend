@@ -18,24 +18,13 @@ export const MainLayout = ({ user, children }: Props) => {
   const { setAccounts, setTransactions } = useAccountStore();
   const { setUser } = useAuthStore();
 
+  console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&');
+  console.log(user);
+  console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&');
+
   useEffect(() => {
     getData();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
-  useEffect(() => {
-    const refreshAccounts = async () => {
-      if (!user) return;
-      getDataStore();
-    };
-
-    const ids = setInterval(() => {
-      refreshAccounts();
-    }, 5000);
-
-    return () => {
-      clearInterval(ids);
-    };
-  }, [user]);
+  }, [user]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const getData = async () => {
     if (user) {

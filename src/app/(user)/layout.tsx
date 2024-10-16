@@ -1,6 +1,6 @@
-import MenuMobileAdm from '@/components/layouts/menuMobileAdm';
+import MenuMobile from '@/components/layouts/menuMobileAdm';
 import Sidebar from '@/components/layouts/sidebar';
-import { HiHome } from 'react-icons/hi';
+import { MdAccountCircle } from 'react-icons/md';
 
 export default async function Layout({
   children,
@@ -9,9 +9,9 @@ export default async function Layout({
 }) {
   const MenuOptions = [
     {
-      title: 'Dashboard',
-      icon: <HiHome size={20} className="text-white" />,
-      route: '/dashboard',
+      title: 'Conta',
+      icon: <MdAccountCircle size={20} className="text-white" />,
+      route: '/conta',
     },
   ];
 
@@ -21,7 +21,7 @@ export default async function Layout({
         <Sidebar menu={MenuOptions} />
       </div>
       <div className="md:hidden">
-        <MenuMobileAdm />
+        <MenuMobile />
       </div>
       <div className="h-full w-full max-h-screen overflow-y-auto  max-w-[1600px] min-h-screen px-4 py-2">
         {children}

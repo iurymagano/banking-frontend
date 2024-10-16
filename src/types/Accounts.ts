@@ -15,6 +15,7 @@ export type Account = {
   type: string;
   status: 'ACTIVE' | 'PENDING_KYC';
   createdAt: Date;
+  accountId: string;
 };
 
 export type DataIca = {

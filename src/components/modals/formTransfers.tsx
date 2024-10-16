@@ -1,7 +1,7 @@
 //@ts-nocheck
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
@@ -28,6 +28,7 @@ import { useAccountStore } from '@/stores/accountsStore';
 import { apiIca, createTransfers } from '@/lib/requests';
 import { formatValor } from '@/lib/utils/format';
 import { schemaTransfers } from '@/schemas/schemaCreateUser';
+import { useAuthStore } from '@/stores/authStore';
 
 type Props = {
   setIsOpen: (value: boolean) => void;
@@ -37,7 +38,11 @@ export default function FormTransfers({ setIsOpen }: Props) {
   const [loading, setLoading] = useState<boolean>(false);
   const [valorFormat, setValorFormat] = useState('');
   const { toast } = useToast();
+  const { user } = useAuthStore();
   const { accounts } = useAccountStore();
+
+  const isTypeAdm = user?.email === 'adm@email.com';
+  const accountId = user?.accounts[0].accountId;
 
   const form = useForm<z.infer<typeof schemaTransfers>>({
     resolver: zodResolver(schemaTransfers),
@@ -48,10 +53,15 @@ export default function FormTransfers({ setIsOpen }: Props) {
     },
   });
 
+  useEffect(() => {
+    if (!isTypeAdm && accountId) {
+      form.setValue('sourceAccountId', accountId);
+    }
+  }, [isTypeAdm, accountId, form]);
+
   async function onSubmit(values: z.infer<typeof schemaTransfers>) {
     setLoading(true);
 
-    console.log(values);
     const number = values.amount.replace(/[^\d,]/g, '');
 
     const valueNumeric = parseFloat(number.replace(',', '.'));
@@ -91,10 +101,13 @@ export default function FormTransfers({ setIsOpen }: Props) {
           name="sourceAccountId"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Conta de origem</FormLabel>
+              <FormLabel>Conta de origem </FormLabel>
+
               <Select
                 onValueChange={field.onChange}
-                defaultValue={field.sourceAccountId}
+                defaultValue={field.value}
+                disabled={!isTypeAdm && !!field.value}
+                value={field.value}
               >
                 <FormControl>
                   <SelectTrigger>
@@ -124,7 +137,8 @@ export default function FormTransfers({ setIsOpen }: Props) {
               <FormLabel>Conta de destino</FormLabel>
               <Select
                 onValueChange={field.onChange}
-                defaultValue={field.targetAccountId}
+                defaultValue={field.value}
+                value={field.value}
               >
                 <FormControl>
                   <SelectTrigger>

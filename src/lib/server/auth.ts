@@ -1,7 +1,7 @@
 'use server';
 
 import { SignInData } from '@/types/Auth';
-import { registerAccount, signIn, signUp } from '../requests';
+import { signIn, signUp } from '../requests';
 import { cookies } from 'next/headers';
 import { User } from '@/types/User';
 import { redirect } from 'next/navigation';
@@ -25,8 +25,6 @@ export const handleSignIn = async (data: SignInData) => {
 
 export const handleSignUp = async (data: AccountCreate) => {
   const response = await signUp(data);
-  console.log('🚀 ~ handleSignUp ~ response:', response);
-
   if (response.result === 'success') {
     cookies().set({
       name: process.env.NEXT_PUBLIC_AUTH_KEY as string,
