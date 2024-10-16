@@ -23,7 +23,7 @@ export default async function Layout({
       <div className="md:hidden">
         <MenuMobile />
       </div>
-      <div className="h-full w-full max-h-screen overflow-y-auto  max-w-[1600px] min-h-screen px-4 py-2">
+      <div className="h-full w-full max-h-screen overflow-y-auto  max-w-[1600px] min-h-screen px-4 ">
         {children}
       </div>
     </div>

@@ -37,7 +37,7 @@ export default function Profile() {
   }, [userObj]);
 
   const getData = async () => {
-    if (userObj && userObj.accounts[0]) {
+    if (userObj && userObj?.accounts?.[0]) {
       const accountId = userObj.accounts[0].accountId;
       const resp = await apiIca({
         method: 'GET',
