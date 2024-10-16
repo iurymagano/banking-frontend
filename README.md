@@ -2,6 +2,10 @@
 
 Welcome to the Banking Frontend project! This application allows users to securely manage their bank accounts and transactions.
 
+## Login to access the Admin Panel
+email: adm@email.com
+password: Bank123@
+
 ## Live Deployment
 
 If you would like to see the live deployment, you can visit the following URL: [Banking Frontend Live](https://banking-frontend-mocha.vercel.app/)
