@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Banking Frontend
+
+Welcome to the Banking Frontend project! This application allows users to securely manage their bank accounts and transactions.
+
+## Live Deployment
+
+If you would like to see the live deployment, you can visit the following URL: [Banking Frontend Live](https://banking-frontend-mocha.vercel.app/)
+
 
 ## Getting Started
 
-First, run the development server:
+To get started with the project, follow these steps:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. **Clone the project**:
+   ```bash
+   git clone https://github.com/iurymagano/banking-frontend.git
+   ```
+   
+2. **Navigate to the project directory**:
+   ```bash
+   cd banking-frontend
+   ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. **Install the necessary dependencies**:
+   ```bash
+   npm install
+   ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+4. **Run the development server**:
+   ```bash
+   npm run dev
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Features
 
-## Learn More
+- User authentication
+- Account creation
+- Viewing all transactions
+- Total balance display
 
-To learn more about Next.js, take a look at the following resources:
+## Images Project
+### Login
+![image](https://github.com/user-attachments/assets/953e8ca3-b299-4740-9332-21c962b0f34e)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Register
+![image](https://github.com/user-attachments/assets/527bc00b-14d0-4ae3-8a19-c65b9f4cad0b)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Dashboard Adm
+![image](https://github.com/user-attachments/assets/25475a97-c476-4a25-91a7-ba3cf47fef65)
 
-## Deploy on Vercel
+### Statement account
+![image](https://github.com/user-attachments/assets/6770ee2d-a531-4bd6-af65-4e81fb59ad02)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+
+
+
