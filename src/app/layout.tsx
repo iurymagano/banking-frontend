@@ -24,7 +24,6 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const user = await handleGetUser();
-  console.log('🚀 ~ useeeeeeeeeeer:', user);
   return (
     <html lang="en">
       <head>

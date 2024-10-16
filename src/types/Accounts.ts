@@ -16,11 +16,15 @@ export type Account = {
   status: 'ACTIVE' | 'PENDING_KYC';
   createdAt: Date;
   accountId: string;
+  document: string;
 };
 
 export type DataIca = {
   path: string;
-  method: 'GET' | 'POST' | 'PUT' | 'DELETE';
+  request?: {
+    method: 'GET' | 'POST' | 'PUT' | 'DELETE';
+    data?: any;
+  };
 };
 
 export type Transaction = {

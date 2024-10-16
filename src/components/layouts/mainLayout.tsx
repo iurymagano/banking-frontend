@@ -18,10 +18,6 @@ export const MainLayout = ({ user, children }: Props) => {
   const { setAccounts, setTransactions } = useAccountStore();
   const { setUser } = useAuthStore();
 
-  console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&');
-  console.log(user);
-  console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&');
-
   useEffect(() => {
     getData();
   }, [user]); // eslint-disable-line react-hooks/exhaustive-deps

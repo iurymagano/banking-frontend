@@ -1,7 +1,5 @@
-//@ts-nocheck
 'use client';
-
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
@@ -25,7 +23,7 @@ import {
 } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
 import { useAccountStore } from '@/stores/accountsStore';
-import { apiIca, createTransfers } from '@/lib/requests';
+import { apiIca } from '@/lib/requests';
 import { formatValor } from '@/lib/utils/format';
 import { schemaTransfers } from '@/schemas/schemaCreateUser';
 import { useAuthStore } from '@/stores/authStore';
@@ -47,17 +45,11 @@ export default function FormTransfers({ setIsOpen }: Props) {
   const form = useForm<z.infer<typeof schemaTransfers>>({
     resolver: zodResolver(schemaTransfers),
     defaultValues: {
-      sourceAccountId: '',
+      sourceAccountId: accountId,
       targetAccountId: '',
       amount: '',
     },
   });
-
-  useEffect(() => {
-    if (!isTypeAdm && accountId) {
-      form.setValue('sourceAccountId', accountId);
-    }
-  }, [isTypeAdm, accountId, form]);
 
   async function onSubmit(values: z.infer<typeof schemaTransfers>) {
     setLoading(true);
@@ -65,16 +57,15 @@ export default function FormTransfers({ setIsOpen }: Props) {
     const number = values.amount.replace(/[^\d,]/g, '');
 
     const valueNumeric = parseFloat(number.replace(',', '.'));
-    values.amount = valueNumeric;
 
     const resp = await apiIca({
       path: '/transaction/internal',
       request: {
         method: 'POST',
-        data: values,
+        data: { ...values, amount: valueNumeric },
       },
     });
-
+    console.log(resp);
     if (resp.result !== 'success') {
       toast({
         variant: 'destructive',
@@ -89,8 +80,11 @@ export default function FormTransfers({ setIsOpen }: Props) {
       variant: 'default',
       title: 'Transação enviada',
     });
-    setIsOpen(false);
-    setLoading(false);
+
+    setTimeout(() => {
+      setIsOpen(false);
+      setLoading(false);
+    }, 1000);
   }
 
   return (
@@ -101,7 +95,7 @@ export default function FormTransfers({ setIsOpen }: Props) {
           name="sourceAccountId"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Conta de origem </FormLabel>
+              <FormLabel>Conta de origem {field.value} </FormLabel>
 
               <Select
                 onValueChange={field.onChange}
@@ -116,6 +110,7 @@ export default function FormTransfers({ setIsOpen }: Props) {
                 </FormControl>
                 <SelectContent>
                   {accounts.map((account) => (
+                    //@ts-ignore
                     <SelectItem key={account.id} value={account.id}>
                       {account.name} - {account.document}
                     </SelectItem>
@@ -147,6 +142,7 @@ export default function FormTransfers({ setIsOpen }: Props) {
                 </FormControl>
                 <SelectContent>
                   {accounts.map((account) => (
+                    //@ts-ignore
                     <SelectItem key={account.id} value={account.id}>
                       {account.name} - {account.document}
                     </SelectItem>

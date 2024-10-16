@@ -11,7 +11,7 @@ export default async function Layout({
     {
       title: 'Conta',
       icon: <MdAccountCircle size={20} className="text-white" />,
-      route: '/conta',
+      route: '/account',
     },
   ];
 

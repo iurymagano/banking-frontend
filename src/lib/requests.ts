@@ -63,7 +63,6 @@ export const apiIca = async (data: DataIca) => {
 
 export const createPix = async (data: DataCreateTransfer) => {
   const respE2eId = await apiIca({
-    method: 'GET',
     path: `/transaction/pix/${process.env.NEXT_PUBLIC_PIX_KEY}`,
   });
   if (respE2eId.result !== 'success') {
