@@ -6,6 +6,11 @@ Welcome to the Banking Frontend project! This application allows users to secure
 
 If you would like to see the live deployment, you can visit the following URL: [Banking Frontend Live](https://banking-frontend-mocha.vercel.app/)
 
+## Backend Repository
+
+This project has a separate backend repository, which you can find [here](https://github.com/iurymagano/banking-backend). The backend has also been deployed, and you can access it at this URL: [Banking Backend Live](https://banking-backend-xi.vercel.app/)
+
+[![Backend Repository](https://img.shields.io/badge/Go%20to-Backend%20Repository-blue?logo=github)](https://github.com/iurymagano/banking-backend)
 
 ## Getting Started
 
