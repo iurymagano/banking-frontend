@@ -56,6 +56,10 @@ To get started with the project, follow these steps:
 ### Statement account
 ![image](https://github.com/user-attachments/assets/6770ee2d-a531-4bd6-af65-4e81fb59ad02)
 
+### Profile User
+![image](https://github.com/user-attachments/assets/af4fd778-7e4f-404f-88c6-3ddf7689f4fd)
+
+
 
 
 
