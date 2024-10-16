@@ -17,6 +17,8 @@ export type Account = {
   createdAt: Date;
   accountId: string;
   document: string;
+  number: number;
+  branch: number;
 };
 
 export type DataIca = {

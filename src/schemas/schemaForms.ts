@@ -75,3 +75,18 @@ export const schemaTransfers = z
     message: 'A conta de origem e destino não podem ser a mesma.',
     path: ['targetAccountId'],
   });
+
+export const shemaFormPix = z.object({
+  accountId: z.string({
+    required_error: 'Por favor selecione uma conta.',
+  }),
+  amount: z.string().refine(
+    (val) => {
+      const number = parseFloat(val.replace(/[^\d,]/g, '').replace(',', '.'));
+      return !isNaN(number) && number > 0;
+    },
+    {
+      message: 'Por favor, insira um valor válido maior que zero.',
+    },
+  ),
+});

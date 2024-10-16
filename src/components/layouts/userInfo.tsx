@@ -7,6 +7,7 @@ import {
   Wallet,
 } from 'lucide-react';
 import NumberMotion from '../ui/numberMotion';
+import { Account } from '@/types/Accounts';
 
 type Props = {
   user: {
@@ -15,14 +16,6 @@ type Props = {
     accounts?: Account[];
   };
   balance: number;
-};
-
-type Account = {
-  accountId: string;
-  document: string;
-  number: string;
-  balance: number;
-  branch: string;
 };
 
 export function UserInfo({ user, balance }: Props) {

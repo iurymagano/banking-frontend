@@ -1,9 +1,9 @@
-//@ts-nocheck
 'use client';
 
 import { getAccounts, getTransactions } from '@/lib/requests';
 import { useAccountStore } from '@/stores/accountsStore';
 import { useAuthStore } from '@/stores/authStore';
+import { Account, Transaction } from '@/types/Accounts';
 import { User } from '@/types/User';
 import { useEffect, useState } from 'react';
 import { BarLoader } from 'react-spinners';
@@ -20,7 +20,15 @@ export const MainLayout = ({ user, children }: Props) => {
 
   useEffect(() => {
     getData();
-  }, [user]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [user]);
+
+  useEffect(() => {
+    if (user) {
+      setInterval(() => {
+        getDataStore();
+      }, 6000);
+    }
+  }, []);
 
   const getData = async () => {
     if (user) {
@@ -36,10 +44,10 @@ export const MainLayout = ({ user, children }: Props) => {
       getTransactions(),
     ]);
     if (resp.result === 'success') {
-      setAccounts(resp.data);
+      setAccounts(resp.data as Account[]);
     }
     if (respTransactions.result === 'success') {
-      setTransactions(respTransactions.data);
+      setTransactions(respTransactions.data as Transaction[]);
     }
   };
 

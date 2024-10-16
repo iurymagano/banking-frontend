@@ -28,21 +28,7 @@ import { useAccountStore } from '@/stores/accountsStore';
 import { formatValor } from '@/lib/utils/format';
 import { createPix } from '@/lib/requests';
 import { useAuthStore } from '@/stores/authStore';
-
-const formSchema = z.object({
-  accountId: z.string({
-    required_error: 'Por favor selecione uma conta.',
-  }),
-  amount: z.string().refine(
-    (val) => {
-      const number = parseFloat(val.replace(/[^\d,]/g, '').replace(',', '.'));
-      return !isNaN(number) && number > 0;
-    },
-    {
-      message: 'Por favor, insira um valor válido maior que zero.',
-    },
-  ),
-});
+import { shemaFormPix } from '@/schemas/schemaForms';
 
 type Props = {
   setIsOpen: (value: boolean) => void;
@@ -55,15 +41,15 @@ export default function FormPix({ setIsOpen }: Props) {
   const { user } = useAuthStore();
   const { accounts } = useAccountStore();
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<z.infer<typeof shemaFormPix>>({
+    resolver: zodResolver(shemaFormPix),
     defaultValues: {
       accountId: '',
       amount: '',
     },
   });
 
-  async function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof shemaFormPix>) {
     setLoading(true);
     const resp = await createPix({
       ...values,

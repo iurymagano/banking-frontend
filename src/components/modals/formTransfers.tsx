@@ -25,7 +25,7 @@ import { useToast } from '@/hooks/use-toast';
 import { useAccountStore } from '@/stores/accountsStore';
 import { apiIca } from '@/lib/requests';
 import { formatValor } from '@/lib/utils/format';
-import { schemaTransfers } from '@/schemas/schemaCreateUser';
+import { schemaTransfers } from '@/schemas/schemaForms';
 import { useAuthStore } from '@/stores/authStore';
 
 type Props = {
@@ -45,7 +45,7 @@ export default function FormTransfers({ setIsOpen }: Props) {
   const form = useForm<z.infer<typeof schemaTransfers>>({
     resolver: zodResolver(schemaTransfers),
     defaultValues: {
-      sourceAccountId: accountId,
+      sourceAccountId: isTypeAdm ? '' : accountId,
       targetAccountId: '',
       amount: '',
     },

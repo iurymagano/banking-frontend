@@ -1,11 +1,5 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import {
   Select,
   SelectContent,
@@ -21,16 +15,21 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
+import { useState, useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { Eye, EyeOff, UserRoundPlus } from 'lucide-react';
 import { formatDoc } from '@/lib/utils/format';
 import Link from 'next/link';
-import { schemaSignUp } from '@/schemas/schemaCreateUser';
+import { schemaSignUp } from '@/schemas/schemaForms';
 import { handleSignUp } from '@/lib/server/auth';
 import { useToast } from '@/hooks/use-toast';
 import { useRouter } from 'next/navigation';
-import { useAuthStore } from '@/stores/authStore';
 
 type FormValues = z.infer<typeof schemaSignUp>;
 
@@ -38,7 +37,6 @@ export default function RegistroAvancadoPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [passwordStrength, setPasswordStrength] = useState(0);
   const [loading, setLoading] = useState(false);
-  const { clearUser } = useAuthStore();
   const { toast } = useToast();
   const router = useRouter();
 
@@ -73,7 +71,6 @@ export default function RegistroAvancadoPage() {
   }, [form]);
 
   const onSubmit = async (data: FormValues) => {
-    // clearUser();
     setLoading(true);
     const resp = await handleSignUp(data);
 

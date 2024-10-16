@@ -23,7 +23,7 @@ import {
 } from '@/components/ui/form';
 import { UserRoundPlus } from 'lucide-react';
 import { formatDoc } from '@/lib/utils/format';
-import { schemaCreateUser } from '@/schemas/schemaCreateUser';
+import { schemaCreateUser } from '@/schemas/schemaForms';
 import { useToast } from '@/hooks/use-toast';
 import { registerAccount } from '@/lib/requests';
 
